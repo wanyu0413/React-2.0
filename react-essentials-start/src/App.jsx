@@ -3,19 +3,20 @@ import { useState } from "react";
 // Only call Hooks on the top level 🔥
 
 import { CORE_CONCEPTS } from "./data.js"; //name export
+import { EXAMPLES } from "./data.js";
 import Header from "./components/Header/Header.jsx"; //default export
 import CoreConcept from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("initial value");
+  const [selectedTopic, setSelectedTopic] = useState("components");
   // selectedTopic => Current state value
   // setSelectedTopic => State updating function
 
   function handleSelect(selectedButton) {
     // selectedButton => 'Components', 'jsx', 'props', 'state'
     setSelectedTopic(selectedButton);
-    console.log(selectedTopic);
+    // console.log(selectedTopic);
   }
 
   return (
@@ -45,7 +46,13 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          {selectedTopic}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
