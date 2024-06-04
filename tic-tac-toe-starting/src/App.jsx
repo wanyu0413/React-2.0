@@ -32,7 +32,7 @@ function App() {
           <Player initialName="Player 1" symbol="X" isActive={activePlayer === 'X'}/>
           <Player initialName="Player 2" symbol="O" isActive={activePlayer === 'O'}/>
         </ol>
-        <GameBoard onSelectSquare={hadleSelectSqare} activePlayerSymbol={activePlayer}/>
+        <GameBoard onSelectSquare={hadleSelectSqare} turns={gameTurns}/>
       </div>
       <Log />
     </main>
