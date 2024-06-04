@@ -1,12 +1,28 @@
 import { useState } from "react";
 import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
+import Log from "./components/Log";
 
 function App() {
+  const [gameTurns, setGameTurns] = useState([])
   const [activePlayer, setActivePlayer] = useState('X');
 
-  function hadleSelectSqare () {
+  function hadleSelectSqare (rowIndex, colIndex) {
     setActivePlayer((currentActivePlayer) => currentActivePlayer === 'X' ? 'O' : 'X')
+    setGameTurns(prevTurns => {
+      let currentPlayer = 'X';
+
+      if (prevTurns.length > 0 && prevTurns[0].player === 'X') {
+        currentPlayer = 'O';
+      }
+
+      const updateedTurns = [
+        { square: { row: rowIndex, col: colIndex }, player: },
+         ...prevTurnsx,
+        ];
+
+        return updateedTurns;
+    });
   }
  
   return (
@@ -18,6 +34,7 @@ function App() {
         </ol>
         <GameBoard onSelectSquare={hadleSelectSqare} activePlayerSymbol={activePlayer}/>
       </div>
+      <Log />
     </main>
   );
 }
