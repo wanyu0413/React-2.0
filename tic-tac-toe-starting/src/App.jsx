@@ -7,7 +7,7 @@ function App() {
   const [gameTurns, setGameTurns] = useState([])
   const [activePlayer, setActivePlayer] = useState('X');
 
-  function hadleSelectSqare (rowIndex, colIndex) {
+  function handleSelectSqare (rowIndex, colIndex) {
     setActivePlayer((currentActivePlayer) => currentActivePlayer === 'X' ? 'O' : 'X')
     setGameTurns(prevTurns => {
       let currentPlayer = 'X';
@@ -16,12 +16,12 @@ function App() {
         currentPlayer = 'O';
       }
 
-      const updateedTurns = [
-        { square: { row: rowIndex, col: colIndex }, player: },
-         ...prevTurnsx,
+      const updatedTurns = [
+        { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
+         ...prevTurns,
         ];
 
-        return updateedTurns;
+        return updatedTurns;
     });
   }
  
@@ -32,9 +32,9 @@ function App() {
           <Player initialName="Player 1" symbol="X" isActive={activePlayer === 'X'}/>
           <Player initialName="Player 2" symbol="O" isActive={activePlayer === 'O'}/>
         </ol>
-        <GameBoard onSelectSquare={hadleSelectSqare} turns={gameTurns}/>
+        <GameBoard onSelectSquare={handleSelectSqare} turns={gameTurns}/>
       </div>
-      <Log />
+      <Log turns={gameTurns}/>
     </main>
   );
 }
