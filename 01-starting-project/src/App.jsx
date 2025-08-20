@@ -31,7 +31,7 @@ function App() {
         </section>
         
         <section id="examples">
-          <h2>Example components</h2>
+          <h2>Example</h2>
           <menu>
             <TabButton onSelect={() => handleClick('components')}>Components</TabButton>
             <TabButton onSelect={() => handleClick('JSX')}>JSX</TabButton>
