@@ -9,7 +9,7 @@ function App() {
   
   function handleClick(selectedButton) {
     // selectedButton => 'Components', 'JSX', 'Props', 'State'
-    selectedTopic(selectedButton);
+    setSelectedTopic(selectedButton);
   }
 
   return (
