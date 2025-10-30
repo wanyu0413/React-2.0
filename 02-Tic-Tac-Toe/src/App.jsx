@@ -1,10 +1,15 @@
-
 function App() {
-  
-
   return (
-    <p>Coming soon....</p>
-  )
+    <main>
+      <div id="game-container">
+        PLAYERS
+
+        GAME BOARD
+      </div>
+
+      LOG
+    </main>
+  );
 }
 
-export default App
+export default App;
