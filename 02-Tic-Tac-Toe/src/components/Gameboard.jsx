@@ -7,14 +7,24 @@ const initialGameboard = [
 ];
 
 export default function Gameboard() {
+  const [gameboard, setGameboard] = useState(initialGameboard);
+
+  function handleSeletedCell(rowIndex, colIndex) {
+    setGameboard(prevGameboard => {
+      const UpdatedGameboard = [...prevGameboard.map(innerArray => [...innerArray])]
+      UpdatedGameboard[rowIndex][colIndex] = 'X'
+      return UpdatedGameboard;
+    })
+  }
+
   return (
     <ol id="game-board">
-      {initialGameboard.map((row, rowIndex) => (
+      {gameboard.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button>{playerSymbol}</button>
+                <button onClick={() => handleSeletedCell(rowIndex, colIndex)}>{playerSymbol}</button>
               </li>
             ))}
           </ol>
