@@ -6,7 +6,7 @@ const initialGameboard = [
   [null, null, null],
 ];
 
-export default function Gameboard() {
+export default function Gameboard({ onSeletedSquare }) {
   const [gameboard, setGameboard] = useState(initialGameboard);
 
   function handleSeletedCell(rowIndex, colIndex) {
@@ -15,6 +15,7 @@ export default function Gameboard() {
       UpdatedGameboard[rowIndex][colIndex] = 'X'
       return UpdatedGameboard;
     })
+    onSeletedSquare();
   }
 
   return (
