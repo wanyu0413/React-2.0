@@ -3,7 +3,7 @@ import Player from "./components/Player.jsx";
 import Gameboard from "./components/Gameboard.jsx";
 import Log from "./components/Log.jsx";
 
-function activePlayer(gameTurns) {
+function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
 
   if (gameTurns.length > 0 && gameTurns[0].player === "X") {
@@ -16,12 +16,12 @@ function activePlayer(gameTurns) {
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
   // const [activePlayer, setActivePlayer] = useState();
-  const activePlayer = activePlayer(gameTurns);
+  const activePlayer = deriveActivePlayer(gameTurns);
 
   function handleSeletSquare(rowIndex, colIndex) {
     // setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
     setGameTurns((prevGameTurns) => {
-      const currentPlayer = activePlayer(prevGameTurns);
+      const currentPlayer = deriveActivePlayer(prevGameTurns);
 
       const updateTurns = [
         { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
